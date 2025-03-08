@@ -118,6 +118,39 @@
         align-items: center;
         gap: 35px;
       }
+
+      @media screen and (max-width: 450px) {
+        .container {
+          width: 300px;
+          height: 400px;
+        }
+
+        .container input {
+          width: 40px;
+          height: 40px;
+          padding: 2px;
+          margin: 5px 0;
+          border-radius: 5px;
+          outline: none;
+          background: transparent;
+          border: 2px solid black;
+          color: black;
+          font-weight: bold;
+          font-size: larger;
+        }
+
+        .input-divs {
+          gap: 10px;
+        }
+
+        .input-divs > * {
+          gap: 5px;
+        }
+
+        h1{
+            font-size: 25px;
+        }
+      }
     </style>
   </head>
   <body>
