@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator-Smit Project</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: rgb(44, 43, 43);
+        color: white;
+        background-image: url(./images/background-image.jpg);
+        /* background-size: cover; */
+        /* background-position: center; */
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        width: 410px;
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        gap: 20px;
+      }
+
+      input {
+        text-align: center;
+      }
+
+      .container h1 {
+        color: rgb(0, 0, 0);
+      }
+
+      .container input {
+        width: 80px;
+        height: 70px;
+        padding: 5px;
+        margin: 10px 0;
+        border-radius: 5px;
+        outline: none;
+        background: transparent;
+        border: 2px solid black;
+        color: black;
+        font-weight: bold;
+        font-size: larger;
+      }
+
+      .input-divs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .input-divs > * {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .label-div {
+        background-color: black;
+        padding: 15px;
+        font-size: large;
+        border-radius: 10px;
+        color: rgb(0, 255, 221);
+        font-weight: bolder;
+      }
+
+      .label-div:hover {
+        background-color: rgb(0, 255, 221);
+        color: black;
+      }
+
+      .container button {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: rgb(16, 221, 211);
+        color: white;
+        font-weight: bold;
+        font-size: large;
+        border: none;
+        cursor: pointer;
+      }
+
+      .container button:hover {
+        background-color: rgb(0, 255, 221);
+        color: black;
+      }
+
+      .container button:active {
+        background-color: rgb(0, 255, 221);
+        color: black;
+        scale: 0.9;
+        transition: 0.7s;
+      }
+
+      .output-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>&lt;&lt; Age Calculator &gt;&gt;</h1>
+      <div class="input-divs">
+        <div class="dayinput">
+          <input type="text" id="day" />
+          <div class="label-div">D</div>
+        </div>
+        <div class="monthinput">
+          <input type="text" id="month" />
+          <div class="label-div">M</div>
+        </div>
+        <div class="yearinput">
+          <input type="text" id="year" />
+          <div class="label-div">Y</div>
+        </div>
+      </div>
+      <button onclick="calculateAge()">Calculate</button>
+      <div class="output-div">
+        <div class="dayout">
+          <input type="text" id="dayout" />
+        </div>
+        <div class="monthout">
+          <input type="text" id="monthout" />
+        </div>
+        <div class="yearout">
+          <input type="text" id="yearout" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function calculateAge() {
+        let currDate = new Date();
+        let currYear = currDate.getFullYear();
+        let currMonth = currDate.getMonth() + 1;
+        let currDay = currDate.getDate();
+
+        let birthYear = document.getElementById("year").value;
+        let birthMonth = document.getElementById("month").value;
+        let birthDay = document.getElementById("day").value;
+
+        let ageYear = currYear - birthYear;
+        let ageMonth = currMonth - birthMonth;
+        let ageDay = currDay - birthDay;
+
+        if (ageDay < 0) {
+          ageDay = ageDay + 30;
+          ageMonth = ageMonth - 1;
+        }
+
+        if (ageMonth < 0) {
+          ageMonth = ageMonth + 12;
+          ageYear = ageYear - 1;
+        }
+
+        if ((birthYear || birthMonth || birthDay) == "") {
+          alert("Please Enter Your Birth Date");
+        } else {
+          document.getElementById("dayout").value = ageDay;
+          document.getElementById("monthout").value = ageMonth;
+          document.getElementById("yearout").value = ageYear;
+        }
+
+        console.log(ageYear, ageMonth, ageDay);
+      }
+    </script>
+  </body>
+</html>
